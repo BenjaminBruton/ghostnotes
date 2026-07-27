@@ -135,7 +135,7 @@ export default function Casting() {
 
             {/* Officer Keller */}
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Officerk Keller</h4>
+              <h4 className="text-lg font-bold text-white mb-2">Officer Keller</h4>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 40s-50s</p>
                 <p>• No particular height required</p>
