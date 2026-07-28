@@ -38,18 +38,16 @@ export async function POST(request: Request) {
 
   // Handle the checkout.session.completed event
   if (event.type === "checkout.session.completed") {
-    const eventSession = event.data.object as Stripe.Checkout.Session;
-
-    // Retrieve the full session with shipping details
-    const session = await stripe.checkout.sessions.retrieve(eventSession.id, {
-      expand: ['shipping_details'],
-    });
+    const session = event.data.object as any;
 
     // Get customer details
     const customerEmail = session.customer_details?.email || "";
     const customerName = session.customer_details?.name || "";
     const customerPhone = session.customer_details?.phone || "";
-    const shippingAddress = (session as any).shipping_details?.address;
+    
+    // Get shipping address from collected_information (new Stripe structure)
+    const shippingDetails = session.collected_information?.shipping_details;
+    const shippingAddress = shippingDetails?.address;
     const amount = (session.amount_total || 0) / 100; // Convert cents to dollars
     const tierId = session.metadata?.tierId || "";
     const tierName = donationTierNames[tierId] || "Unknown Tier";
