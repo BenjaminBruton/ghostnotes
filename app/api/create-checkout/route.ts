@@ -42,6 +42,14 @@ export async function POST(request: Request) {
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/crowdfunding/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/crowdfunding`,
+      customer_email: undefined, // Stripe will ask for email
+      billing_address_collection: "required",
+      shipping_address_collection: {
+        allowed_countries: ["US", "CA"],
+      },
+      phone_number_collection: {
+        enabled: true,
+      },
       metadata: {
         tierId,
         tierName: tier.name,
