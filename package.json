@@ -13,10 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",
+    "@stripe/stripe-js": "^9.12.1",
     "@vercel/analytics": "^2.0.1",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "stripe": "^22.3.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",

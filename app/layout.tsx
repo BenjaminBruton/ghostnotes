@@ -41,6 +41,12 @@ export default function RootLayout({
                 >
                   Crew
                 </Link>
+                <Link
+                  href="/crowdfunding"
+                  className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-primary-red transition-colors"
+                >
+                  Crowdfunding
+                </Link>
               </div>
             </div>
           </div>
