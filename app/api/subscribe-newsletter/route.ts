@@ -16,6 +16,37 @@ export async function POST(request: Request) {
       );
     }
 
+    // Add contact to SendFox
+    try {
+      const sendfoxResponse = await fetch("https://api.sendfox.com/contacts", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.SENDFOX_API_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          first_name: name || "",
+          lists: process.env.SENDFOX_LIST_ID
+            ? [parseInt(process.env.SENDFOX_LIST_ID)]
+            : undefined,
+        }),
+      });
+
+      const sendfoxData = await sendfoxResponse.json();
+
+      // SendFox returns 422 if contact already exists - this is okay
+      if (!sendfoxResponse.ok && sendfoxResponse.status !== 422) {
+        console.error("SendFox API error:", sendfoxData);
+        // Continue with email notifications even if SendFox fails
+      } else {
+        console.log("Contact added to SendFox:", sendfoxData);
+      }
+    } catch (sendfoxError) {
+      console.error("Error adding to SendFox:", sendfoxError);
+      // Continue with email notifications even if SendFox fails
+    }
+
     // Send notification email to the film team
     const notificationMsg = {
       to: process.env.RECIPIENT_EMAIL || "your-email@example.com",
@@ -102,8 +133,14 @@ export async function POST(request: Request) {
           </div>
           
           <div style="margin-top: 20px; padding: 15px; background-color: #1e3a5f; background-opacity: 0.2; border-radius: 8px; text-align: center;">
-            <p style="color: #9ca3af; font-size: 12px; margin: 0;">
+            <p style="color: #9ca3af; font-size: 12px; margin: 0 0 10px 0;">
               © 2026 Ghost Notes. All rights reserved.
+            </p>
+            <p style="color: #9ca3af; font-size: 11px; margin: 0;">
+              Don't want to receive these emails? 
+              <a href="${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/unsubscribe" style="color: #8b2e2e; text-decoration: underline;">
+                Unsubscribe here
+              </a>
             </p>
           </div>
         </div>

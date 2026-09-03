@@ -6,9 +6,12 @@ A Next.js website for promoting the indie short film "Ghost Notes" with a landin
 
 - 🎬 Landing page with film information, logline, and blog updates
 - 📝 Casting submission form with email notifications
+- 📧 Newsletter signup with SendFox integration for subscriber management
+- 🚫 Unsubscribe functionality for newsletter
 - 🎨 Muted color scheme (black, blue, and red)
 - 📱 Fully responsive design
 - ✉️ Email integration using SendGrid
+- 🦊 Email marketing with SendFox API
 - 🚀 Ready for Vercel deployment
 
 ## Tech Stack
@@ -25,6 +28,7 @@ A Next.js website for promoting the indie short film "Ghost Notes" with a landin
 
 - Node.js 18+ installed
 - A [SendGrid](https://sendgrid.com) account for email functionality
+- A [SendFox](https://sendfox.com) account (Lifetime or Empire plan) for newsletter management
 
 ### Installation
 
@@ -43,17 +47,22 @@ A Next.js website for promoting the indie short film "Ghost Notes" with a landin
 3. **Configure your environment variables in `.env.local`:**
 
    ```env
+   # SendGrid (for email notifications)
    SENDGRID_API_KEY=your_sendgrid_api_key_here
    SENDER_EMAIL=your-verified-sender@example.com
    RECIPIENT_EMAIL=your-email@example.com
+   
+   # SendFox (for newsletter management)
+   SENDFOX_API_TOKEN=your_sendfox_personal_access_token
+   SENDFOX_LIST_ID=your_list_id
+   
+   # Base URL
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
    ```
 
-   To get your SendGrid API key:
-   - Sign up at [sendgrid.com](https://sendgrid.com)
-   - Go to Settings → API Keys
-   - Create a new API key
-   - Copy it to your `.env.local` file
-   - See `SENDGRID-SETUP-INSTRUCTIONS.md` for detailed setup
+   **Setup guides:**
+   - SendGrid: See `SENDGRID-SETUP-INSTRUCTIONS.md` for email setup
+   - SendFox: See `SENDFOX-SETUP.md` for newsletter integration
 
 4. **Run the development server:**
    ```bash
