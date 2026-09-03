@@ -7,25 +7,26 @@ const donationTiers = [
     id: "tier_10",
     amount: 10,
     name: "Supporter",
-    description: "HD Download",
-    rewards: ["HD download of the short film"],
+    description: "Good old fashioned DVD!",
+    rewards: ["Good old fashioned DVD of the short film"],
   },
   {
     id: "tier_50",
     amount: 50,
     name: "Fan",
-    description: "T-Shirt + HD Download",
-    rewards: ["Exclusive Ghost Notes t-shirt", "HD download of the short film"],
+    description: "T-Shirt + Good old fashioned DVD!",
+    rewards: ["Exclusive Ghost Notes t-shirt", "Good old fashioned DVD of the short film"],
   },
   {
     id: "tier_100",
     amount: 100,
     name: "VIP",
-    description: "Set Visit + T-Shirt + HD Download",
+    description: "Set Visit + T-Shirt + Good old fashioned DVD!",
     rewards: [
+      "Shout out in the credits!",
       "Visit the set during production",
       "Exclusive Ghost Notes t-shirt",
-      "HD download of the short film",
+      "Good old fashioned DVD of the short film",
     ],
   },
   {
@@ -37,7 +38,7 @@ const donationTiers = [
       "Executive Producer credit in the film",
       "Visit the set during production",
       "Exclusive Ghost Notes t-shirt",
-      "HD download of the short film",
+      "Good old fashioned DVD of the short film",
     ],
   },
 ];
@@ -325,7 +326,7 @@ export default function Crowdfunding() {
               When will I receive my rewards?
             </h3>
             <p className="text-sm">
-              T-shirts will be sent after filming wraps. HD downloads and credits will
+              T-shirts will be sent after filming wraps. Good old fashioned DVD!s and credits will
               be delivered upon film completion (estimated late 2026). Set visits will
               be coordinated during production.
             </p>

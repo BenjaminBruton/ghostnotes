@@ -1,6 +1,56 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/subscribe-newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you for subscribing! Check your email for confirmation.",
+        });
+        setEmail("");
+        setName("");
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "Failed to subscribe. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero Section */}
@@ -78,6 +128,74 @@ export default function Home() {
               screen.
             </p>
           </article>
+        </div>
+      </section>
+
+      {/* Newsletter Signup Section */}
+      <section className="mb-16 bg-primary-blue bg-opacity-10 p-8 rounded-lg border border-primary-blue">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-4 text-center">
+            Stay Updated
+          </h2>
+          <p className="text-gray-300 mb-6 text-center">
+            Subscribe to our newsletter to receive the latest updates on production progress, casting announcements, and festival screenings.
+          </p>
+          
+          <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="newsletter-name" className="sr-only">
+                  Name (Optional)
+                </label>
+                <input
+                  type="text"
+                  id="newsletter-name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name (optional)"
+                  className="w-full px-4 py-3 bg-primary-black border border-primary-blue rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-red transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  required
+                  className="w-full px-4 py-3 bg-primary-black border border-primary-blue rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-red transition-colors"
+                />
+              </div>
+            </div>
+            
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-primary-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
+            </button>
+            
+            {submitStatus.type && (
+              <div
+                className={`p-4 rounded-lg text-center ${
+                  submitStatus.type === "success"
+                    ? "bg-green-900 bg-opacity-20 border border-green-700 text-green-400"
+                    : "bg-red-900 bg-opacity-20 border border-red-700 text-red-400"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+          </form>
+          
+          <p className="text-sm text-gray-400 text-center mt-4">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
         </div>
       </section>
 
