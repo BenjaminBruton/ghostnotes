@@ -75,7 +75,6 @@ export default function Casting() {
       {/* Audition Prerequisites */}
       <div className="mb-8 p-6 bg-primary-red bg-opacity-10 border-2 border-primary-red rounded-lg">
         <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
-          <span className="text-primary-red mr-2">⚠️</span>
           Audition Requirements
         </h2>
         <p className="text-gray-300 mb-4">
@@ -85,7 +84,7 @@ export default function Casting() {
           <li className="flex items-start">
             <span className="text-primary-red mr-3 text-xl">•</span>
             <span>
-              <strong className="text-white">Headshot & Costume Photos:</strong> Provide one professional headshot and 3 pictures in costume
+              <strong className="text-white">Headshot:</strong> Provide at least one professional headshot
             </span>
           </li>
           <li className="flex items-start">
@@ -112,8 +111,13 @@ export default function Casting() {
           <h3 className="text-xl font-semibold text-primary-red mb-4">Lead Roles</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Tommy */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Tommy</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Tommy</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-orange-500 text-white shadow-lg">
+                  URGENT
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 18-24 y/o</p>
                 <p>• Playing high school senior</p>
@@ -124,7 +128,12 @@ export default function Casting() {
 
             {/* Michael */}
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Michael</h4>
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Michael</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500 text-white shadow-lg">
+                  PENDING
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• Black male, 18-24 y/o</p>
                 <p>• Playing high school senior</p>
@@ -134,8 +143,13 @@ export default function Casting() {
             </div>
 
             {/* Officer Keller */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Officer Keller</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Officer Keller</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  CASTED
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 40s-50s</p>
                 <p>• No particular height required</p>
@@ -150,8 +164,13 @@ export default function Casting() {
           <h3 className="text-xl font-semibold text-primary-red mb-4">Supporting Roles</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Amy */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Amy</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Amy</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  CASTED
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• Female, 18-24 y/o</p>
                 <p>• Playing high school senior</p>
@@ -161,8 +180,13 @@ export default function Casting() {
             </div>
 
             {/* Justin Keller */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Justin Keller</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Justin</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-orange-500 text-white shadow-lg">
+                  URGENT
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 18-24 y/o</p>
                 <p>• Playing high school senior</p>
@@ -172,8 +196,13 @@ export default function Casting() {
             </div>
 
             {/* Officer Anderson */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Officer Anderson</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Officer Anderson</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500 text-white shadow-lg">
+                  PENDING
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 50s-60s</p>
                 <p>• Height: 5'10" - 6'2"</p>
@@ -182,8 +211,13 @@ export default function Casting() {
             </div>
 
             {/* Fella #1 */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Fella #1</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Fella #1</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  CASTED
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 30s-40s</p>
                 <p>• No particular build required</p>
@@ -191,8 +225,13 @@ export default function Casting() {
             </div>
 
             {/* Fella #2 */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <h4 className="text-lg font-bold text-white mb-2">Fella #2</h4>
+            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white">Fella #2</h4>
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  CASTED
+                </span>
+              </div>
               <div className="space-y-1 text-gray-300 text-sm">
                 <p>• White male, 30s-40s</p>
                 <p>• No particular build required</p>
