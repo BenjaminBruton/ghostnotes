@@ -175,7 +175,7 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
               <h4 className="text-lg font-bold text-white mb-2">Officer Anderson</h4>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 50s-60s</p>
+                <p>• White male, 40s</p>
                 <p>• Height: 5'10" - 6'2"</p>
                 <p>• No particular build</p>
               </div>
@@ -185,7 +185,7 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
               <h4 className="text-lg font-bold text-white mb-2">Fella #1</h4>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 30s-40s</p>
+                <p>• Any male, 30s-40s</p>
                 <p>• No particular build required</p>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
               <h4 className="text-lg font-bold text-white mb-2">Fella #2</h4>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 30s-40s</p>
+                <p>• Any male, 30s-40s</p>
                 <p>• No particular build required</p>
               </div>
             </div>
