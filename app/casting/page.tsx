@@ -204,7 +204,7 @@ export default function Casting() {
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 50s-60s</p>
+                <p>• White male, 40s</p>
                 <p>• Height: 5'10" - 6'2"</p>
                 <p>• No particular build</p>
               </div>
@@ -219,7 +219,7 @@ export default function Casting() {
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 30s-40s</p>
+                <p>• Any male, 30s-40s</p>
                 <p>• No particular build required</p>
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function Casting() {
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 30s-40s</p>
+                <p>• Any male, 30s-40s</p>
                 <p>• No particular build required</p>
               </div>
             </div>
