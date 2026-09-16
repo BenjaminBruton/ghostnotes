@@ -103,6 +103,26 @@ export default function Home() {
         <div className="space-y-6">
           <article className="bg-primary-blue bg-opacity-10 p-6 rounded-lg border border-primary-blue hover:border-primary-red transition-colors">
             <h3 className="text-xl font-semibold text-white mb-2">
+              Behind the Scenes
+            </h3>
+            <p className="text-sm text-gray-400 mb-3">September 15, 2026</p>
+            <div className="aspect-video w-full mb-4">
+              <iframe
+                className="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/oTlyC3dwdSA"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <p className="text-gray-300">
+              Check out our latest update video!
+            </p>
+          </article>
+          
+          <article className="bg-primary-blue bg-opacity-10 p-6 rounded-lg border border-primary-blue hover:border-primary-red transition-colors">
+            <h3 className="text-xl font-semibold text-white mb-2">
               Casting Call Now Open
             </h3>
             <p className="text-sm text-gray-400 mb-3">July 25, 2026</p>
