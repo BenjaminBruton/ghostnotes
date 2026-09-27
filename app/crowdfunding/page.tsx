@@ -4,16 +4,23 @@ import { useState } from "react";
 
 const donationTiers = [
   {
+    id: "tier_5",
+    amount: 5,
+    name: "Supporter",
+    description: "Throw us a fiver just because you're interested in the project!",
+    rewards: ["Eternal friendship, and a hug if we meet"],
+  },
+  {
     id: "tier_10",
     amount: 10,
-    name: "Supporter",
+    name: "Fan",
     description: "Good old fashioned DVD!",
     rewards: ["Good old fashioned DVD of the short film"],
   },
   {
     id: "tier_50",
     amount: 50,
-    name: "Fan",
+    name: "True Fan",
     description: "T-Shirt with your choice of two movie poster designs + Good old fashioned DVD!",
     rewards: ["Exclusive Ghost Notes t-shirt", "Good old fashioned DVD of the short film"],
   },
@@ -136,7 +143,7 @@ export default function Crowdfunding() {
 {/* Designs Showcase */}
       <div className="mb-12">
         <p className="text-center text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-          These are the designs available for the t-shirts and movie posters within the various funding tiers. Artwork by David 'Grasshopeer' Handy (grassart82@gmail.com).
+          These are the designs available for the t-shirts and movie posters within the various funding tiers. Artwork by David 'Grasshopper' Handy (grassart82@gmail.com).
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* T-Shirt Design */}
@@ -359,7 +366,7 @@ export default function Crowdfunding() {
               When will I receive my rewards?
             </h3>
             <p className="text-sm">
-              T-shirts will be sent after filming wraps. Good old fashioned DVD!s and credits will
+              T-shirts and posters will be sent in time for Christmas ;). Good old fashioned DVD!s and credits will
               be delivered upon film completion (estimated late 2026). Set visits will
               be coordinated during production.
             </p>
