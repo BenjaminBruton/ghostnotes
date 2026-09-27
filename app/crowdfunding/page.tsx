@@ -54,7 +54,7 @@ const donationTiers = [
     name: "Absolute Legend",
     description: "All the rewards of other tiers + pretty much whatever",
     rewards: [
-      "You can come to the table read on 11/14/26,
+      "You can come hang out at the table read on 11/14/26",
       "Executive Producer credit in the film",
       "Visit the set during production, and you can be an extra, hell, I can maybe even sneak in a speaking role!",
       "Exclusive Ghost Notes t-shirt (you can get one of each)",
