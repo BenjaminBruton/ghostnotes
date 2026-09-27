@@ -114,8 +114,8 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Tommy</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-orange-500 text-white shadow-lg">
-                  URGENT
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -130,8 +130,8 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Michael</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500 text-white shadow-lg">
-                  PENDING
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -147,7 +147,7 @@ export default function Casting() {
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Officer Keller</h4>
                 <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  CASTED
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -168,7 +168,7 @@ export default function Casting() {
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Amy</h4>
                 <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  CASTED
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -183,8 +183,8 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Justin</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-orange-500 text-white shadow-lg">
-                  URGENT
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -199,8 +199,8 @@ export default function Casting() {
             <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Officer Anderson</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500 text-white shadow-lg">
-                  PENDING
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -215,7 +215,7 @@ export default function Casting() {
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Fella #1</h4>
                 <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  CASTED
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -229,7 +229,7 @@ export default function Casting() {
               <div className="flex items-start justify-between mb-2">
                 <h4 className="text-lg font-bold text-white">Fella #2</h4>
                 <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  CASTED
+                  FILLED
                 </span>
               </div>
               <div className="space-y-1 text-gray-300 text-sm">
@@ -244,7 +244,7 @@ export default function Casting() {
         <div className="bg-primary-red bg-opacity-10 p-5 rounded-lg border border-primary-red">
           <h3 className="text-xl font-semibold text-white mb-2">Extras</h3>
           <p className="text-gray-300">
-            We're also looking for extras for various background scenes. All ages, genders, and ethnicities welcome.
+            We are still looking for a few extras between the ages of 18-25 for one scene that will be shot the night of Saturday 11/21/26.
           </p>
         </div>
       </div>
