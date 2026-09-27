@@ -48,7 +48,8 @@ const donationTiers = [
       "Exclusive Ghost Notes t-shirt",
       "Good old fashioned DVD",
     ],
-      {
+   },
+   {
     id: "tier_1000",
     amount: 1000,
     name: "Absolute Legend",
