@@ -9,10 +9,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
 
 const donationTierNames: Record<string, string> = {
-  tier_10: "Supporter",
-  tier_50: "Fan",
+  tier_5: "Supporter",
+  tier_10: "Fan",
+  tier_50: "True Fan",
   tier_100: "VIP",
   tier_500: "Executive Producer",
+  tier_1000: "Absolute Legend",
 };
 
 export async function POST(request: Request) {
@@ -86,10 +88,12 @@ export async function POST(request: Request) {
               <div style="margin-bottom: 15px;">
                 <strong style="color: #8b2e2e;">Your Rewards:</strong><br/>
                 <ul style="color: #e5e5e5; margin: 10px 0;">
-                  ${tierId === "tier_10" ? '<li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_50" ? '<li>Exclusive Ghost Notes t-shirt</li><li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_100" ? '<li>Visit the set during production</li><li>Exclusive Ghost Notes t-shirt</li><li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_500" ? '<li>Executive Producer credit in the film</li><li>Visit the set during production</li><li>Exclusive Ghost Notes t-shirt</li><li>HD download of the short film</li>' : ''}
+                  ${tierId === "tier_5" ? '<li>Eternal friendship, and a hug if we meet</li>' : ''}
+                  ${tierId === "tier_10" ? '<li>Good old fashioned DVD of the short film</li>' : ''}
+                  ${tierId === "tier_50" ? '<li>Exclusive Ghost Notes t-shirt</li><li>Good old fashioned DVD</li>' : ''}
+                  ${tierId === "tier_100" ? '<li>Shout out in the credits!</li><li>Visit the set during production</li><li>Exclusive Ghost Notes t-shirt</li><li>A badass movie poster designed by David \'Grasshopper\' Handy</li><li>Good old fashioned DVD</li>' : ''}
+                  ${tierId === "tier_500" ? '<li>Executive Producer credit in the film</li><li>Visit the set during production, hell you can be an extra if you want!</li><li>Exclusive Ghost Notes t-shirt</li><li>Good old fashioned DVD</li>' : ''}
+                  ${tierId === "tier_1000" ? '<li>You can come hang out at the table read on 11/14/26</li><li>Executive Producer credit in the film</li><li>Visit the set during production, and you can be an extra, hell, I can maybe even sneak in a speaking role!</li><li>Exclusive Ghost Notes t-shirt (you can get one of each)</li><li>Good old fashioned DVD</li>' : ''}
                 </ul>
               </div>
             </div>
@@ -170,10 +174,12 @@ export async function POST(request: Request) {
               <div style="margin-top: 20px; padding: 15px; background-color: #8b2e2e; background-opacity: 0.2; border-radius: 8px;">
                 <strong style="color: #ffffff;">Rewards to Fulfill:</strong>
                 <ul style="color: #e5e5e5; margin: 10px 0;">
-                  ${tierId === "tier_10" ? '<li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_50" ? '<li>Mail t-shirt to address above</li><li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_100" ? '<li>Coordinate set visit</li><li>Mail t-shirt to address above</li><li>HD download of the short film</li>' : ''}
-                  ${tierId === "tier_500" ? '<li>Add Executive Producer credit to film</li><li>Coordinate set visit</li><li>Mail t-shirt to address above</li><li>HD download of the short film</li>' : ''}
+                  ${tierId === "tier_5" ? '<li>Send eternal friendship and hug if you meet them</li>' : ''}
+                  ${tierId === "tier_10" ? '<li>Mail DVD to address above</li>' : ''}
+                  ${tierId === "tier_50" ? '<li>Mail t-shirt to address above</li><li>Mail DVD to address above</li>' : ''}
+                  ${tierId === "tier_100" ? '<li>Add shout out in credits</li><li>Coordinate set visit</li><li>Mail t-shirt to address above</li><li>Mail movie poster to address above</li><li>Mail DVD to address above</li>' : ''}
+                  ${tierId === "tier_500" ? '<li>Add Executive Producer credit to film</li><li>Coordinate set visit (can be an extra)</li><li>Mail t-shirt to address above</li><li>Mail DVD to address above</li>' : ''}
+                  ${tierId === "tier_1000" ? '<li>Coordinate table read attendance on 11/14/26</li><li>Add Executive Producer credit to film</li><li>Coordinate set visit (extra/speaking role)</li><li>Mail both t-shirt designs to address above</li><li>Mail DVD to address above</li>' : ''}
                 </ul>
               </div>
             </div>

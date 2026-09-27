@@ -6,10 +6,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 });
 
 const donationTiers: Record<string, { amount: number; name: string }> = {
-  tier_10: { amount: 1000, name: "Supporter - HD Download" },
-  tier_50: { amount: 5000, name: "Fan - T-Shirt + HD Download" },
-  tier_100: { amount: 10000, name: "VIP - Set Visit + T-Shirt + HD Download" },
-  tier_500: { amount: 50000, name: "Executive Producer - Credit + All Rewards" },
+  tier_5: { amount: 500, name: "Supporter" },
+  tier_10: { amount: 1000, name: "Fan" },
+  tier_50: { amount: 5000, name: "True Fan" },
+  tier_100: { amount: 10000, name: "VIP" },
+  tier_500: { amount: 50000, name: "Executive Producer" },
+  tier_1000: { amount: 100000, name: "Absolute Legend" },
 };
 
 export async function POST(request: Request) {
