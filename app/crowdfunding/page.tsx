@@ -22,7 +22,7 @@ const donationTiers = [
     amount: 50,
     name: "True Fan",
     description: "T-Shirt with your choice of two movie poster designs + Good old fashioned DVD!",
-    rewards: ["Exclusive Ghost Notes t-shirt", "Good old fashioned DVD of the short film"],
+    rewards: ["Exclusive Ghost Notes t-shirt", "Good old fashioned DVD"],
   },
   {
     id: "tier_100",
@@ -34,7 +34,7 @@ const donationTiers = [
       "Visit the set during production",
       "Exclusive Ghost Notes t-shirt",
       "A badass movie poster designed by David 'Grasshopper' Handy",
-      "Good old fashioned DVD of the short film",
+      "Good old fashioned DVD",
     ],
   },
   {
@@ -46,7 +46,19 @@ const donationTiers = [
       "Executive Producer credit in the film",
       "Visit the set during production, hell you can be an extra if you want!",
       "Exclusive Ghost Notes t-shirt",
-      "Good old fashioned DVD of the short film",
+      "Good old fashioned DVD",
+    ],
+      {
+    id: "tier_1000",
+    amount: 1000,
+    name: "Absolute Legend",
+    description: "All the rewards of other tiers + pretty much whatever",
+    rewards: [
+      "You can come to the table read on 11/14/26,
+      "Executive Producer credit in the film",
+      "Visit the set during production, and you can be an extra, hell, I can maybe even sneak in a speaking role!",
+      "Exclusive Ghost Notes t-shirt (you can get one of each)",
+      "Good old fashioned DVD",
     ],
   },
 ];
