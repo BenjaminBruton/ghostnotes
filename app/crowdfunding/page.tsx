@@ -133,26 +133,33 @@ export default function Crowdfunding() {
         </p>
       </div>
 
-     {/* Designs Showcase */}
+{/* Designs Showcase */}
       <div className="mb-12">
         <p className="text-center text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-          These are the designs available for the t-shirts and movie posters within the various funding tiers
+          These are the designs available for the t-shirts and movie posters within the various funding tiers. Artwork by David 'Grasshopeer' Handy (grassart82@gmail.com).
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 text-center">
-            <img 
-              src="/images/ghostnotesposter1.jpeg" 
-              alt="Poster Design one" 
-              className="w-full h-64 object-cover rounded-md mb-3"
-            />
+          {/* T-Shirt Design */}
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
+            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/ghostnotesposter1.jpeg" 
+                alt="Movie Poster Design one" 
+                className="w-full h-full object-contain"
+              />
+            </div>
             <span className="text-gray-300 font-medium">Movie Poster Design One</span>
           </div>
-          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 text-center">
-            <img 
-              src="/images/ghostnotesposter2.jpeg" 
-              alt="Poster Design two" 
-              className="w-full h-64 object-cover rounded-md mb-3"
-            />
+
+          {/* Movie Poster Design */}
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
+            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/ghostnotesposter2.jpeg" 
+                alt="Movie Poster Design two" 
+                className="w-full h-full object-contain"
+              />
+            </div>
             <span className="text-gray-300 font-medium">Movie Poster Design Two</span>
           </div>
         </div>
