@@ -14,7 +14,7 @@ const donationTiers = [
     id: "tier_50",
     amount: 50,
     name: "Fan",
-    description: "T-Shirt + Good old fashioned DVD!",
+    description: "T-Shirt with your choice of two movie poster designs + Good old fashioned DVD!",
     rewards: ["Exclusive Ghost Notes t-shirt", "Good old fashioned DVD of the short film"],
   },
   {
@@ -26,6 +26,7 @@ const donationTiers = [
       "Shout out in the credits!",
       "Visit the set during production",
       "Exclusive Ghost Notes t-shirt",
+      "A badass movie poster designed by David 'Grasshopper' Handy",
       "Good old fashioned DVD of the short film",
     ],
   },
@@ -36,7 +37,7 @@ const donationTiers = [
     description: "Credit + All Rewards",
     rewards: [
       "Executive Producer credit in the film",
-      "Visit the set during production",
+      "Visit the set during production, hell you can be an extra if you want!",
       "Exclusive Ghost Notes t-shirt",
       "Good old fashioned DVD of the short film",
     ],
@@ -130,6 +131,31 @@ export default function Crowdfunding() {
           equipment, and bring together the talented cast and crew needed to make
           Ghost Notes a reality.
         </p>
+      </div>
+
+     {/* Designs Showcase */}
+      <div className="mb-12">
+        <p className="text-center text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
+          These are the designs available for the t-shirts and movie posters within the various funding tiers
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 text-center">
+            <img 
+              src="/images/ghostnotesposter1.jpeg" 
+              alt="Poster Design one" 
+              className="w-full h-64 object-cover rounded-md mb-3"
+            />
+            <span className="text-gray-300 font-medium">Movie Poster Design One</span>
+          </div>
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 text-center">
+            <img 
+              src="/images/ghostnotesposter2.jpeg" 
+              alt="Poster Design two" 
+              className="w-full h-64 object-cover rounded-md mb-3"
+            />
+            <span className="text-gray-300 font-medium">Movie Poster Design Two</span>
+          </div>
+        </div>
       </div>
 
       {/* Donation Tiers */}
