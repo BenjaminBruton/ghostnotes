@@ -237,8 +237,8 @@ export default function Crowdfunding() {
             In-Kind Donation: Meal Support
           </h2>
           <p className="text-gray-300 mb-6">
-            Businesses and individuals can donate a full shooting day worth of meals
-            (breakfast, lunch, and dinner for cast and crew) and receive all rewards
+            Businesses and individuals can donate a full meal
+            (breakfast, lunch, or dinner for cast and crew) and receive all rewards
             from the <span className="text-primary-red font-semibold">$500+ Executive Producer tier</span>,
             including an Executive Producer credit in the film!
           </p>
@@ -398,9 +398,8 @@ export default function Crowdfunding() {
               How will the funds be used?
             </h3>
             <p className="text-sm">
-              Your support goes directly toward production costs including equipment
-              rental, location fees, post-production, and compensation for our talented
-              cast and crew.
+              Your support goes directly toward compensation for our talented
+              cast and crew. Anything beyond that will go to crafty and meals and productions costs like equipment rentals and purchases last.
             </p>
           </div>
         </div>

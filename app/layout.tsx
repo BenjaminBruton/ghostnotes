@@ -7,8 +7,29 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ghost Notes - Indie Short Film",
-  description: "An indie short film by [Your Name]",
+  metadataBase: new URL("https://www.ghostnotesshortfilm.com"),
+  title: "Ghost Notes",
+  description: "An indie short film by Ben Wright",
+  openGraph: {
+    title: "Ghost Notes",
+    description: "An indie short film by Ben Wright",
+    type: "website",
+    url: "https://www.ghostnotesshortfilm.com",
+    images: [
+      {
+        url: "/images/ghostnotesposter1.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Ghost Notes - Indie Short Film",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ghost Notes - Indie Short Film",
+    description: "An indie short film by Ben Wright",
+    images: ["/images/ghostnotesposter1.jpeg"],
+  },
 };
 
 export default function RootLayout({
