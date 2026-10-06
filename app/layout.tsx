@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ghostnotesshortfilm.com"),
-  title: "Ghost Notes",
+  title: "Ghost Notes ",
   description: "An indie short film by Ben Wright",
   openGraph: {
     title: "Ghost Notes",
