@@ -191,6 +191,29 @@ export async function POST(request: Request) {
     } catch (error) {
       console.error("Error sending donation confirmation emails:", error);
     }
+
+    // Update funding tracker
+    try {
+      const fundingResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/funding`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount }),
+        }
+      );
+      
+      if (fundingResponse.ok) {
+        const updatedFunding = await fundingResponse.json();
+        console.log(`Funding tracker updated: $${updatedFunding.totalFunding}`);
+      } else {
+        console.error("Failed to update funding tracker");
+      }
+    } catch (error) {
+      console.error("Error updating funding tracker:", error);
+    }
   }
 
   return NextResponse.json({ received: true });

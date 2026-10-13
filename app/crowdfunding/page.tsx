@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const donationTiers = [
   {
@@ -75,6 +75,34 @@ export default function Crowdfunding() {
     proposal: "",
   });
   const [inKindStatus, setInKindStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  
+  // Funding tracker data
+  const [currentFunding, setCurrentFunding] = useState(465); // Current funding amount
+  const [isLoadingFunding, setIsLoadingFunding] = useState(true);
+  const fundingGoals = [
+    { amount: 2000, label: "Initial Goal", description: "Food, Gas, & Labor for Cast & Crew!" },
+    { amount: 3000, label: "Stretch Goal 1", description: "For extra equipment - buying or renting!" },
+    { amount: 4000, label: "Stretch Goal 2", description: "Cast & Crew bonuses, festical submission costs, and marketing!" },
+  ];
+
+  // Fetch current funding on component mount
+  useEffect(() => {
+    const fetchFunding = async () => {
+      try {
+        const response = await fetch("/api/funding");
+        if (response.ok) {
+          const data = await response.json();
+          setCurrentFunding(data.totalFunding);
+        }
+      } catch (error) {
+        console.error("Error fetching funding data:", error);
+      } finally {
+        setIsLoadingFunding(false);
+      }
+    };
+
+    fetchFunding();
+  }, []);
 
   const handleDonation = async (tierId: string) => {
     setSelectedTier(tierId);
@@ -153,35 +181,122 @@ export default function Crowdfunding() {
         </p>
       </div>
 
-{/* Designs Showcase */}
-      <div className="mb-12">
-        <p className="text-center text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-          These are the designs available for the t-shirts and movie posters within the various funding tiers. Artwork by David 'Grasshopper' Handy (grassart82@gmail.com).
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* T-Shirt Design */}
-          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
-            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
-              <img 
-                src="/images/ghostnotesposter1.jpeg" 
-                alt="Movie Poster Design one" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <span className="text-gray-300 font-medium">Movie Poster Design One</span>
+      {/* Blood Bag Funding Tracker */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-white mb-8 text-center">
+          Funding Progress
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {fundingGoals.map((goal, index) => {
+            const previousGoal = index > 0 ? fundingGoals[index - 1].amount : 0;
+            const progressInThisGoal = Math.max(0, Math.min(currentFunding - previousGoal, goal.amount - previousGoal));
+            const goalRange = goal.amount - previousGoal;
+            const percentFilled = goalRange > 0 ? (progressInThisGoal / goalRange) * 100 : 0;
+            const isCompleted = currentFunding >= goal.amount;
+            const isActive = currentFunding >= previousGoal && currentFunding < goal.amount;
+            
+            return (
+              <div key={index} className="flex flex-col items-center">
+                {/* Blood Bag Container */}
+                <div className="relative w-40 h-56 mb-4">
+                  {/* Blood Bag SVG */}
+                  <svg
+                    viewBox="0 0 160 224"
+                    className="w-full h-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <clipPath id={`bagClip${index}`}>
+                        <path d="M 60 20 L 60 10 Q 60 5 65 5 L 95 5 Q 100 5 100 10 L 100 20 Q 100 25 105 30 L 105 200 Q 105 210 95 215 L 65 215 Q 55 210 55 200 L 55 30 Q 55 25 60 20 Z" />
+                      </clipPath>
+                      
+                      <linearGradient id={`bloodGradient${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#8B2E2E" stopOpacity="0.9" />
+                        <stop offset="100%" stopColor="#5A1A1A" stopOpacity="1" />
+                      </linearGradient>
+                    </defs>
+                    
+                    <path
+                      d="M 60 20 L 60 10 Q 60 5 65 5 L 95 5 Q 100 5 100 10 L 100 20 Q 100 25 105 30 L 105 200 Q 105 210 95 215 L 65 215 Q 55 210 55 200 L 55 30 Q 55 25 60 20 Z"
+                      fill="rgba(30, 58, 95, 0.2)"
+                      stroke="#1e3a5f"
+                      strokeWidth="2"
+                    />
+                    
+                    <g clipPath={`url(#bagClip${index})`}>
+                      <rect
+                        x="55"
+                        y={215 - (195 * percentFilled / 100)}
+                        width="50"
+                        height={195 * percentFilled / 100}
+                        fill={`url(#bloodGradient${index})`}
+                        className="transition-all duration-1000 ease-out"
+                      />
+                      {percentFilled > 0 && (
+                        <ellipse
+                          cx="75"
+                          cy={215 - (195 * percentFilled / 100) + 10}
+                          rx="15"
+                          ry="5"
+                          fill="rgba(255, 255, 255, 0.1)"
+                        />
+                      )}
+                    </g>
+                    
+                    <rect x="77" y="0" width="6" height="10" fill="#1e3a5f" stroke="#8b2e2e" strokeWidth="1" />
+                    <line x1="110" y1="70" x2="115" y2="70" stroke="#1e3a5f" strokeWidth="1" opacity="0.5" />
+                    <line x1="110" y1="120" x2="115" y2="120" stroke="#1e3a5f" strokeWidth="1" opacity="0.5" />
+                    <line x1="110" y1="170" x2="115" y2="170" stroke="#1e3a5f" strokeWidth="1" opacity="0.5" />
+                  </svg>
+                  
+                  {isCompleted && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="bg-green-500 rounded-full p-3 animate-pulse">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="text-center">
+                  <h3 className={`text-lg font-bold mb-1 ${isCompleted ? 'text-green-400' : isActive ? 'text-primary-red' : 'text-gray-400'}`}>
+                    {goal.label}
+                  </h3>
+                  <p className="text-2xl font-bold text-white mb-1">
+                    ${goal.amount.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-gray-400">{goal.description}</p>
+                  {isActive && (
+                    <p className="text-sm text-primary-red mt-2 font-semibold">
+                      ${progressInThisGoal.toLocaleString()} raised
+                    </p>
+                  )}
+                  {isCompleted && (
+                    <p className="text-sm text-green-400 mt-2 font-semibold">
+                      ✓ Completed!
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        
+        <div className="mt-8 text-center">
+          <p className="text-3xl font-bold text-white mb-2">
+            ${currentFunding.toLocaleString()} <span className="text-gray-400 text-xl">raised</span>
+          </p>
+          <div className="max-w-md mx-auto bg-primary-blue bg-opacity-20 rounded-full h-4 overflow-hidden border border-primary-blue">
+            <div 
+              className="h-full bg-gradient-to-r from-primary-red to-red-800 transition-all duration-1000 ease-out"
+              style={{ width: `${Math.min((currentFunding / fundingGoals[fundingGoals.length - 1].amount) * 100, 100)}%` }}
+            />
           </div>
-
-          {/* Movie Poster Design */}
-          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
-            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
-              <img 
-                src="/images/ghostnotesposter2.jpeg" 
-                alt="Movie Poster Design two" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <span className="text-gray-300 font-medium">Movie Poster Design Two</span>
-          </div>
+          <p className="text-sm text-gray-400 mt-2">
+            {((currentFunding / fundingGoals[fundingGoals.length - 1].amount) * 100).toFixed(1)}% of final goal
+          </p>
         </div>
       </div>
 
@@ -190,6 +305,11 @@ export default function Crowdfunding() {
         <h2 className="text-2xl font-bold text-white mb-8 text-center">
           Choose Your Support Level
         </h2>
+        <div className="bg-primary-red bg-opacity-20 border-2 border-primary-red rounded-lg p-4 mb-6 text-center">
+          <p className="text-white font-semibold text-lg">
+            🎬 <span className="text-primary-red">BONUS:</span> Every supporter from VIP and above will also receive a random signed prop from filming!
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {donationTiers.map((tier) => (
             <div
@@ -227,6 +347,41 @@ export default function Crowdfunding() {
               </button>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Designs Showcase */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-white mb-8 text-center">
+          Reward Designs
+        </h2>
+        <p className="text-center text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
+          These are the designs available for the t-shirts and movie posters within the various funding tiers. Artwork by David 'Grasshopper' Handy (grassart82@gmail.com).
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* T-Shirt Design */}
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
+            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/ghostnotesposter1.jpeg" 
+                alt="Movie Poster Design one" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-gray-300 font-medium">Movie Poster Design One</span>
+          </div>
+
+          {/* Movie Poster Design */}
+          <div className="bg-primary-blue bg-opacity-10 border border-primary-blue rounded-lg p-4 flex flex-col items-center">
+            <div className="w-full aspect-[1326/2049] relative mb-3 bg-black/20 rounded-md overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/ghostnotesposter2.jpeg" 
+                alt="Movie Poster Design two" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-gray-300 font-medium">Movie Poster Design Two</span>
+          </div>
         </div>
       </div>
 
