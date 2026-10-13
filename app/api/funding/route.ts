@@ -1,47 +1,50 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { supabase, isSupabaseConfigured } from "../../../lib/supabase";
 
-const fundingFilePath = path.join(process.cwd(), "data", "funding.json");
-
-// Ensure the data directory and file exist
-function ensureFundingFile() {
-  const dataDir = path.join(process.cwd(), "data");
-  
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  
-  if (!fs.existsSync(fundingFilePath)) {
-    const initialData = {
-      totalFunding: 465,
-      lastUpdated: new Date().toISOString(),
-    };
-    fs.writeFileSync(fundingFilePath, JSON.stringify(initialData, null, 2));
-  }
-}
-
-// GET - Retrieve current funding
+// GET - Retrieve current funding from Supabase
 export async function GET() {
   try {
-    ensureFundingFile();
-    const data = fs.readFileSync(fundingFilePath, "utf-8");
-    const fundingData = JSON.parse(data);
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      console.warn("⚠️ Supabase not configured. Returning default funding amount.");
+      return NextResponse.json({
+        totalFunding: 470,
+        lastUpdated: new Date().toISOString(),
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('funding')
+      .select('total_funding, last_updated')
+      .order('id', { ascending: false })
+      .limit(1)
+      .single();
     
-    return NextResponse.json(fundingData);
+    if (error) {
+      console.error("Supabase error:", error);
+      // Return default if no record exists yet
+      return NextResponse.json({
+        totalFunding: 470,
+        lastUpdated: new Date().toISOString(),
+      });
+    }
+    
+    return NextResponse.json({
+      totalFunding: parseFloat(data.total_funding),
+      lastUpdated: data.last_updated,
+    });
   } catch (error) {
-    console.error("Error reading funding data:", error);
-    return NextResponse.json(
-      { totalFunding: 465, lastUpdated: new Date().toISOString() },
-      { status: 200 }
-    );
+    console.error("Error reading funding from database:", error);
+    return NextResponse.json({
+      totalFunding: 470,
+      lastUpdated: new Date().toISOString(),
+    });
   }
 }
 
-// POST - Update funding (used by webhook)
+// POST - Update funding in Supabase (used by webhook)
 export async function POST(request: Request) {
   try {
-    ensureFundingFile();
     const { amount } = await request.json();
     
     if (typeof amount !== "number" || amount <= 0) {
@@ -51,22 +54,52 @@ export async function POST(request: Request) {
       );
     }
     
-    // Read current funding
-    const data = fs.readFileSync(fundingFilePath, "utf-8");
-    const fundingData = JSON.parse(data);
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      console.warn("⚠️ Supabase not configured. Cannot persist funding update.");
+      console.log(`Would have added: +$${amount}`);
+      return NextResponse.json({
+        totalFunding: 470 + amount,
+        lastUpdated: new Date().toISOString(),
+        warning: "Supabase not configured - update not persisted"
+      });
+    }
     
-    // Add new donation
-    fundingData.totalFunding += amount;
-    fundingData.lastUpdated = new Date().toISOString();
+    // Get current funding total
+    const { data: currentData, error: fetchError } = await supabase
+      .from('funding')
+      .select('total_funding')
+      .order('id', { ascending: false })
+      .limit(1)
+      .single();
     
-    // Save updated funding
-    fs.writeFileSync(fundingFilePath, JSON.stringify(fundingData, null, 2));
+    const currentTotal = currentData ? parseFloat(currentData.total_funding) : 470;
+    const newTotal = currentTotal + amount;
     
-    console.log(`Funding updated: +$${amount} = $${fundingData.totalFunding}`);
+    // Insert new funding record
+    const { error: insertError } = await supabase
+      .from('funding')
+      .insert([{
+        total_funding: newTotal,
+        last_updated: new Date().toISOString(),
+      }]);
     
-    return NextResponse.json(fundingData);
+    if (insertError) {
+      console.error("Error inserting funding:", insertError);
+      return NextResponse.json(
+        { error: "Failed to update funding" },
+        { status: 500 }
+      );
+    }
+    
+    console.log(`✅ Funding updated in Supabase: +$${amount} = $${newTotal}`);
+    
+    return NextResponse.json({
+      totalFunding: newTotal,
+      lastUpdated: new Date().toISOString(),
+    });
   } catch (error) {
-    console.error("Error updating funding data:", error);
+    console.error("Error updating funding in database:", error);
     return NextResponse.json(
       { error: "Failed to update funding" },
       { status: 500 }
