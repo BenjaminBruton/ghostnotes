@@ -82,7 +82,7 @@ export default function Crowdfunding() {
   const fundingGoals = [
     { amount: 2000, label: "Initial Goal", description: "Food, Gas, & Labor for Cast & Crew!" },
     { amount: 3000, label: "Stretch Goal 1", description: "For extra equipment - buying or renting!" },
-    { amount: 4000, label: "Stretch Goal 2", description: "Cast & Crew bonuses, festical submission costs, and marketing!" },
+    { amount: 4000, label: "Stretch Goal 2", description: "Cast & Crew bonuses, festival submission costs, and marketing!" },
   ];
 
   // Fetch current funding on component mount
