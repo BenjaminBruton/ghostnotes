@@ -63,186 +63,135 @@ export default function Casting() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Casting Submissions
+          Cast
         </h1>
         <div className="w-24 h-1 bg-primary-red mx-auto mb-6"></div>
         <p className="text-lg text-gray-300">
-          Interested in auditioning for "Ghost Notes"? Fill out the form below
-          to express your interest.
+          Meet the talented cast bringing "Ghost Notes" to life.
         </p>
       </div>
 
-      {/* Audition Prerequisites */}
-      <div className="mb-8 p-6 bg-primary-red bg-opacity-10 border-2 border-primary-red rounded-lg">
-        <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
-          Audition Requirements
-        </h2>
-        <p className="text-gray-300 mb-4">
-          If selected for an audition, you must be prepared with the following:
-        </p>
-        <ul className="space-y-3 text-gray-200">
-          <li className="flex items-start">
-            <span className="text-primary-red mr-3 text-xl">•</span>
-            <span>
-              <strong className="text-white">Headshot:</strong> Provide at least one professional headshot
-            </span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-primary-red mr-3 text-xl">•</span>
-            <span>
-              <strong className="text-white">Prepared Monologue:</strong> Perform a prepared monologue (1-2 minutes)
-            </span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-primary-red mr-3 text-xl">•</span>
-            <span>
-              <strong className="text-white">Script Reading:</strong> Be prepared to read with another actor from our script
-            </span>
-          </li>
-        </ul>
-      </div>
-
-      {/* Available Roles */}
+      {/* Cast Members */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-white mb-6">Available Roles</h2>
-        
-        {/* Lead Roles */}
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold text-primary-red mb-4">Lead Roles</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Tommy */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Tommy</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 18-24 y/o</p>
-                <p>• Playing high school senior</p>
-                <p>• Height: 5'7" - 6'0"</p>
-                <p>• Athletic build (football player)</p>
-              </div>
+        <h2 className="text-2xl font-bold text-white mb-6">Lead Roles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Tommy */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/JacobClayton_TOMMY.JPG" 
+                alt="Jacob Clayton as Tommy" 
+                className="w-full h-full object-cover"
+              />
             </div>
-
-            {/* Michael */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Michael</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• Black male, 18-24 y/o</p>
-                <p>• Playing high school senior</p>
-                <p>• Height: 5'6" - 5'10"</p>
-                <p>• No particular build required</p>
-              </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Jacob Clayton</h4>
+              <p className="text-primary-red font-semibold">as Tommy</p>
             </div>
+          </div>
 
-            {/* Officer Keller */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Officer Keller</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 40s-50s</p>
-                <p>• No particular height required</p>
-                <p>• No particular build required</p>
-              </div>
+          {/* Michael */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/ChrisDenson_MICHAEL.jpeg" 
+                alt="Chris Denson as Michael" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Chris Denson</h4>
+              <p className="text-primary-red font-semibold">as Michael</p>
+            </div>
+          </div>
+
+          {/* Officer Keller */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/AndrewDillon_OFFICERKELLER.jpg" 
+                alt="Andrew Dillon as Officer Keller" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Andrew Dillon</h4>
+              <p className="text-primary-red font-semibold">as Officer Keller</p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Supporting Roles */}
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold text-primary-red mb-4">Supporting Roles</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Amy */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Amy</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• Female, 18-24 y/o</p>
-                <p>• Playing high school senior</p>
-                <p>• No particular race or height</p>
-                <p>• Athletic build</p>
-              </div>
+      {/* Supporting Roles */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-white mb-6">Supporting Roles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Amy */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/JennaBobbora_AMY.jpg" 
+                alt="Jenna Bobbora as Amy" 
+                className="w-full h-full object-cover"
+              />
             </div>
-
-            {/* Justin Keller */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Justin</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 18-24 y/o</p>
-                <p>• Playing high school senior</p>
-                <p>• Height: 5'10" - 6'1"</p>
-                <p>• Athletic build (football player)</p>
-              </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Jenna Bobbora</h4>
+              <p className="text-primary-red font-semibold">as Amy</p>
             </div>
+          </div>
 
-            {/* Officer Anderson */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Officer Anderson</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• White male, 40s</p>
-                <p>• Height: 5'10" - 6'2"</p>
-                <p>• No particular build</p>
-              </div>
+          {/* Justin */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/JakeSeamster_JUSTIN.png" 
+                alt="Jake Seamster as Justin" 
+                className="w-full h-full object-cover"
+              />
             </div>
-
-            {/* Fella #1 */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Fella #1</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• Any male, 30s-40s</p>
-                <p>• No particular build required</p>
-              </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Jake Seamster</h4>
+              <p className="text-primary-red font-semibold">as Justin</p>
             </div>
+          </div>
 
-            {/* Fella #2 */}
-            <div className="bg-primary-blue bg-opacity-10 p-5 rounded-lg border border-primary-blue relative">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="text-lg font-bold text-white">Fella #2</h4>
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-white shadow-lg">
-                  FILLED
-                </span>
-              </div>
-              <div className="space-y-1 text-gray-300 text-sm">
-                <p>• Any male, 30s-40s</p>
-                <p>• No particular build required</p>
-              </div>
+          {/* Officer Anderson */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/MattGarretson_OFFICERANDERSON.png" 
+                alt="Matt Garretson as Officer Anderson" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Matt Garretson</h4>
+              <p className="text-primary-red font-semibold">as Officer Anderson</p>
+            </div>
+          </div>
+
+          {/* Sara */}
+          <div className="bg-primary-blue bg-opacity-10 rounded-lg border border-primary-blue overflow-hidden">
+            <div className="aspect-[3/4] relative bg-black">
+              <img 
+                src="/images/JadeAsh_SARA.jpeg" 
+                alt="Jade Ash as Sara" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-bold text-white mb-1">Jade Ash</h4>
+              <p className="text-primary-red font-semibold">as Sara</p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Extras */}
+      {/* Extras */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-white mb-6">Extras</h2>
         <div className="bg-primary-red bg-opacity-10 p-5 rounded-lg border border-primary-red">
-          <h3 className="text-xl font-semibold text-white mb-2">Extras</h3>
           <p className="text-gray-300">
             We are still looking for a few extras between the ages of 18-25 for one scene that will be shot the night of Saturday 11/21/26.
           </p>
